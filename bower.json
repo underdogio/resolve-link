@@ -1,0 +1,25 @@
+{
+  "name": "resolve-link",
+  "version": "1.0.0",
+  "homepage": "https://github.com/underdogio/resolve-link",
+  "authors": [
+    "Todd Wolfson <todd@twolfson.com>"
+  ],
+  "description": "Resolve complete/partial URLs against a canonical target URL",
+  "main": "dist/resolve-link.min.js",
+  "keywords": [
+    "resolve",
+    "link",
+    "url",
+    "target",
+    "canonical"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
