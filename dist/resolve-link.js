@@ -9,7 +9,8 @@ function resolveLink(srcUrl, targetUrl) {
   var srcUrlObj = url.parse(srcUrl);
 
   // If there isn't a protocol
-  if (srcUrlObj.protocol === null) {
+  // DEV: `node@0.8` has this as `undefined`, `node@0.10` has this as `null`
+  if (!srcUrlObj.protocol) {
     // With no protocol, we have everything in pathname. Add on `//` and force treatment of `host`
     var tmpSrcUrl = '//' + srcUrl;
     var tmpSrcUrlObj = url.parse(tmpSrcUrl, null, true);
@@ -27,12 +28,14 @@ function resolveLink(srcUrl, targetUrl) {
   srcUrlObj.pathname = srcUrlObj.pathname || '/';
 
   // If we still have no protocol
-  if (srcUrlObj.protocol === null) {
+  // DEV: `node@0.8` has this as `undefined`, `node@0.10` has this as `null`
+  if (!srcUrlObj.protocol) {
     // Parse our targetUrl
     var targetUrlObj = url.parse(targetUrl);
 
     // If there is a hostname
-    if (srcUrlObj.hostname !== null) {
+    // DEV: `node@0.8` has this as `undefined`, `node@0.10` has this as `null`
+    if (srcUrlObj.hostname) {
       // If the hostname is the same as our original, add on a protocol
       if (srcUrlObj.hostname === targetUrlObj.hostname) {
         srcUrlObj.protocol = targetUrlObj.protocol;
